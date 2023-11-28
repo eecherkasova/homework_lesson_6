@@ -1,4 +1,3 @@
-import pytest
 from datetime import time
 
 
@@ -31,7 +30,7 @@ def test_dark_theme_by_time_and_user_choice():
 
 
 def test_find_suitable_user_by_name():
-    global suitable_users
+    suitable_users = []
     users = [
         {"name": "Oleg", "age": 32},
         {"name": "Sergey", "age": 24},
@@ -43,8 +42,7 @@ def test_find_suitable_user_by_name():
     for user in users:
         if user["name"] == "Olga":
             suitable_users = user
-        else:
-            continue
+            break
 
     assert suitable_users == {"name": "Olga", "age": 45}
 
@@ -63,8 +61,7 @@ def test_find_suitable_user_by_age():
     for user in users:
         if user["age"] < 20:
             suitable_users.append(user)
-        else:
-            continue
+
 
     assert suitable_users == [
         {"name": "Stanislav", "age": 15},
